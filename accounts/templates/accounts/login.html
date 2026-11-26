@@ -1,0 +1,38 @@
+{% extends "accounts/base.html" %}
+
+{% block title %}Iniciar sesión | Academia Docente{% endblock %}
+
+{% block content %}
+<h1>Iniciar sesión</h1>
+
+{% if form.non_field_errors %}
+<div class="errores-generales">
+    {{ form.non_field_errors }}
+</div>
+{% endif %}
+
+<form method="post" action="{% url 'accounts:login' %}" class="formulario">
+    {% csrf_token %}
+    {% if next %}
+    <input type="hidden" name="next" value="{{ next }}">
+    {% endif %}
+
+    <div class="campo">
+        <label for="{{ form.username.id_for_label }}">Usuario</label>
+        {{ form.username }}
+        {{ form.username.errors }}
+    </div>
+
+    <div class="campo">
+        <label for="{{ form.password.id_for_label }}">Contraseña</label>
+        {{ form.password }}
+        {{ form.password.errors }}
+    </div>
+
+    <button type="submit" class="boton">Iniciar sesión</button>
+</form>
+
+<p class="enlace-secundario">
+    <a href="{% url 'accounts:registro' %}">Crear cuenta</a>
+</p>
+{% endblock %}

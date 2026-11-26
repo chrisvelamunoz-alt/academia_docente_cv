@@ -1,0 +1,18 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}Academia Docente{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'accounts/estilos.css' %}">
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+    <main class="contenedor">
+        <section class="tarjeta">
+            {% block content %}{% endblock %}
+        </section>
+    </main>
+</body>
+</html>
